@@ -36,16 +36,6 @@ node {
                 patternSeparator: '[, ]+', remoteDirectory: '/etc/nginx/conf.d', 
                 remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'vue_nginx.conf')], 
                 usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false),
-
-                // 拷贝部署脚本deploy.sh到nginx下，并执行脚本
-                sshPublisherDesc(configName: '192.168.99.224', 
-                transfers: [sshTransfer(cleanRemote: false, excludes: '', 
-                execCommand: '/usr/share/nginx/html/vuenginx/deploy.sh', execTimeout: 120000, flatten: false,
-                makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', 
-                remoteDirectory: '/usr/share/nginx/html/vuenginx', remoteDirectorySDF: false, 
-                removePrefix: '', sourceFiles: 'deploy.sh')], usePromotionTimestamp: false, 
-                useWorkspaceInPromotion: false, verbose: false)
-
             ]
         )
     }
