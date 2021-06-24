@@ -36,6 +36,14 @@ node {
                 patternSeparator: '[, ]+', remoteDirectory: '/etc/nginx/conf.d', 
                 remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'vue_nginx.conf')], 
                 usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false),
+
+                // 执行服务器上的重启nginx脚本
+                sshPublisherDesc(configName: '192.168.99.224', 
+                transfers: [sshTransfer(cleanRemote: false, excludes: '', 
+                execCommand: '/opt/jenkins_shell/font_deploy.sh', execTimeout: 120000, flatten: false, 
+                makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', 
+                remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], 
+                usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
             ]
         )
     }
