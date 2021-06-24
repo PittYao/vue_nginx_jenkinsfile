@@ -20,21 +20,21 @@ node {
 
     //=====以下为远程调用进行项目部署========
     sshPublisher(publishers: 
-        [
-            sshPublisherDesc(configName: '192.168.99.224',
-            transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '',
-            execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes:false, 
-            patternSeparator: '[, ]+', remoteDirectory: '/usr/share/nginx/html/vuenginx',
-            remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**')],
-            usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false),
+            [
+                sshPublisherDesc(configName: '192.168.99.224',
+                transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '',
+                execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes:false, 
+                patternSeparator: '[, ]+', remoteDirectory: '/usr/share/nginx/html/vuenginx',
+                remoteDirectorySDF: false, removePrefix: 'dist', sourceFiles: 'dist/**')],
+                usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false),
 
-            sshPublisherDesc(configName: '192.168.99.224', 
-            transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', 
-            execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, 
-            patternSeparator: '[, ]+', remoteDirectory: '/etc/nginx/conf.d', 
-            remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'vue_nginx.conf')], 
-            usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-        ]
-    )
+                sshPublisherDesc(configName: '192.168.99.224', 
+                transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', 
+                execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, 
+                patternSeparator: '[, ]+', remoteDirectory: '/etc/nginx/conf.d', 
+                remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'vue_nginx.conf')], 
+                usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
+            ]
+        )
     }
 }
