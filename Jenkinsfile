@@ -18,7 +18,9 @@ node {
             '''
     }
 
-    //=====以下为远程调用进行项目部署========
+    stage('拷贝文件到远程服务器后重启nginx') {
+        echo "=======拷贝编译后文件和nginx配置文件到远程服务器后重启nginx======"
+         //=====以下为远程调用进行项目部署========
     sshPublisher(publishers: 
             [
                 // 拷贝编译后的dist文件夹下内容，到ngin的目录下
@@ -46,5 +48,8 @@ node {
                 usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
             ]
         )
+    }
+
+   
     }
 }
