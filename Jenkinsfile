@@ -12,7 +12,7 @@ node {
     }
 
     stage('编译') {
-        echo "=======使用NodeJS的npm进行打包======"
+        echo "=======使用NodeJS的cnpm进行打包======"
         nodejs('NodeJS'){
             sh '''
                 cnpm install
