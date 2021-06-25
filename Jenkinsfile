@@ -1,16 +1,18 @@
 //git的凭证
 def git_auth = "3c624c30-b117-47c8-9e3e-c9551498e3a5"
+def git_url = "http://gitcebon.cebon-company.online:8080/fanyao/vue_nginx.git"
 
 node {
     stage('拉取代码') {
+        echo "======拉取代码======"
         checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']],
         doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
         userRemoteConfigs: [[credentialsId: "${git_auth}", url:
-        'http://gitcebon.cebon-company.online:8080/fanyao/vue_nginx.git']]])
+        "${git_url}"]]])
     }
 
-    stage('打包，部署网站') {
-        //使用NodeJS的npm进行打包
+    stage('编译') {
+        echo "=======使用NodeJS的npm进行打包======"
         nodejs('NodeJS'){
             sh '''
                 cnpm install
@@ -18,11 +20,10 @@ node {
             '''
         }
     }
-    
+
     stage('拷贝文件到远程服务器后重启nginx') {
         echo "=======拷贝编译后文件和nginx配置文件到远程服务器后重启nginx======"
-         //=====以下为远程调用进行项目部署========
-    sshPublisher(publishers: 
+        sshPublisher(publishers: 
             [
                 // 拷贝编译后的dist文件夹下内容，到ngin的目录下
                 sshPublisherDesc(configName: '192.168.99.224',
