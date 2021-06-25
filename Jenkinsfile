@@ -16,8 +16,9 @@ node {
                 cnpm install
                 cnpm run build
             '''
+        }
     }
-
+    
     stage('拷贝文件到远程服务器后重启nginx') {
         echo "=======拷贝编译后文件和nginx配置文件到远程服务器后重启nginx======"
          //=====以下为远程调用进行项目部署========
@@ -50,6 +51,4 @@ node {
         )
     }
 
-   
-    }
 }
